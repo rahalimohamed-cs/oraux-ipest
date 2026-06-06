@@ -5,7 +5,7 @@
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{stmaryrd}
-\usepackage[margin=1cm]{geometry}
+\usepackage[margin=1cm, includeheadfoot]{geometry}
 \usepackage{frenchmath}
 
 \begin{document}
@@ -36,7 +36,6 @@
 
 % --- DÉBUT DE LA SOLUTION (Introduction avec triangle \triangleright) ---
 \noindent $\triangleright$ \textbf{Solution.} \\
-
 % --- PREMIÈRE QUESTION (Introduite par une puce \bullet comme dans l'image) ---
 \textbf{1.} Commençons par calculer $A^2$. Soit $(i,j) \in \llbracket 1,n \rrbracket^2$. On a :
 \[
@@ -83,5 +82,111 @@ et les espaces propres associés sont donnés par :
 \[
 \boxed{E_{n-1}(A) = \mathrm{Vect}\left((1, \dots, 1)^T\right) \quad \text{et} \quad E_{-1}(A) = H.}
 \]
+
+% --- TITRE DE L'EXERCICE ---
+\begin{center}
+    \large \textbf{2. Suites de Cauchy et complétude}
+\end{center}
+\vspace{0.2cm}
+
+% --- ENCADRÉ DE L'ÉNONCÉ ---
+\noindent\framebox[\textwidth]{%
+    \begin{minipage}{0.94\textwidth}
+        \vspace{0.2cm}
+        Soit $(E, \| \cdot \|)$ un espace vectoriel normé. Une suite $(u_n) \in E^{\mathbb{N}}$ est de Cauchy si $\forall \varepsilon > 0, \exists N \in \mathbb{N}, \forall n, m \geqslant N, \|u_n - u_m\| \leqslant \varepsilon$.
+        \vspace{0.2cm}
+        
+        \noindent \textbf{a)} Montrer que toute suite convergente est de Cauchy.
+        
+        \noindent \textbf{b)} Dans $E = \mathbb{R}[X]$ muni de la norme $\left\| \sum a_k X^k \right\| = \max |a_k|$, montrer que la suite $(P_n)$ de terme général $P_n = 1 + \sum_{k=1}^n \frac{X^k}{k}$ est de Cauchy sans être convergente ;
+        
+        \noindent \textbf{c)} Montrer que toute suite de Cauchy est bornée.
+        
+        \noindent \textbf{d)} Montrer que, si $(u_n)$ est de Cauchy et possède une suite extraite convergente, alors $(u_n)$ est convergente.
+        
+        \noindent \textbf{e)} On admet le théorème de Bolzano-Weierstrass dans $\mathbb{R}$. Montrer que si $E$ est de dimension finie, alors la suite $(u_n)$ est convergente si et seulement si elle est de Cauchy.
+        \vspace{0.1cm}
+        \begin{flushright}
+            (\textbf{Mines-Ponts, PSI (2025)})
+        \end{flushright}
+    \end{minipage}%
+}
+\vspace{0.4cm}
+
+\noindent $\triangleright$ \textbf{Solution.} \\
+\noindent \textbf{a)} Soit $(u_n)_{n \in \mathbb{N}}$ une suite convergente. Notons $l = \lim_{n \to +\infty} u_n$. Soit $\varepsilon > 0$. Il existe $N \in \mathbb{N}$ tel que pour tout $n \geqslant N$, $\|u_n - l\| \leqslant \varepsilon/2$.
+
+\noindent Pour $m \geqslant N$, on a également $\|u_m - l\| \leqslant \varepsilon/2$. Ainsi, l'inégalité triangulaire donne :
+$$ \|u_n - u_m\| \leqslant \|u_n - l\| + \|u_m - l\| \leqslant \varepsilon/2 + \varepsilon/2 = \varepsilon $$
+\noindent d'où :
+\begin{center}
+    \fbox{$(u_n)_{n \in \mathbb{N}}$ est de Cauchy}
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent \textbf{b)} Montrons d'abord que pour la norme définie, $(P_n)_{n \in \mathbb{N}}$ n'est pas convergente. On raisonne par l'absurde en supposant qu'elle est convergente. On note $P = \lim_{\|\cdot\| \ n \to +\infty} P_n = \sum_{k=0}^d a_k X^k$, avec $(a_k)_{0 \leqslant k \leqslant d} \in \mathbb{R}^{d+1}$ et $d \in \mathbb{N}$.
+
+\noindent On a donc :
+$$ \|P_n - P\| = \left\| 1 + \sum_{k=1}^n \frac{X^k}{k} - \sum_{k=0}^d a_k X^k \right\| $$
+\noindent D'où, pour $n > d$ : 
+$$ \|P_n - P\| = \max \left( |1-a_0|, \left| \frac{1}{k} - a_k \right| _{1 \leqslant k \leqslant d}, \left( \frac{1}{k} \right)_{d+1 \leqslant k \leqslant n} \right) \geqslant \frac{1}{d+1} \neq 0 $$
+\noindent On déduit que :
+\begin{center}
+    \fbox{\begin{tabular}{c} $(P_n)_{n \in \mathbb{N}}$ n'est pas convergente \\ pour la norme $\|\cdot\|$ \end{tabular}}
+\end{center}
+
+\noindent $\bullet$ Montrons que $(P_n)_{n \in \mathbb{N}}$ est néanmoins de Cauchy. Soit $\varepsilon > 0$. Remarquons d'abord que pour $m > n$ :
+$$ P_m - P_n = \sum_{k=n+1}^m \frac{X^k}{k} $$
+\noindent d'où :
+$$ \|P_m - P_n\| = \max_{n+1 \leqslant k \leqslant m} \left( \frac{1}{k} \right) $$
+
+\noindent Puisque $\frac{1}{k} \leqslant \frac{1}{n+1}$ pour tout $k \in \llbracket n+1, m \rrbracket$, notons $N = \left\lceil \frac{1}{\varepsilon} - 1 \right\rceil$. On a donc pour $m > n \geqslant N$ :
+$$ \|P_m - P_n\| \leqslant \varepsilon $$
+\noindent d'où :
+\begin{center}
+    \fbox{$(P_n)_{n \in \mathbb{N}}$ est de Cauchy}
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent \textbf{c)} Soit $(u_n)_{n \in \mathbb{N}}$ une suite de Cauchy. Il existe $N \in \mathbb{N}$ tel que pour tous $n,m \geqslant N$, $\|u_n - u_m\| \leqslant 1$. Pour $m = N$, l'inégalité triangulaire renversée donne : $\|u_n\| - \|u_N\| \leqslant \|u_n - u_N\|$, donc pour tout $n \geqslant N$ :
+$$ \boxed{ \|u_n\| \leqslant \|u_N\| + 1 } $$
+
+\noindent $(u_n)_{n \in \mathbb{N}}$ est donc bornée à partir d'un certain rang et on déduit que :
+\begin{center}
+    \fbox{$(u_n)_{n \in \mathbb{N}}$ est bornée}
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent \textbf{d)} Soit $(u_n)_{n \in \mathbb{N}}$ une suite de Cauchy qui possède une suite extraite convergente $(u_{\varphi(n)})_{n \in \mathbb{N}}$ de limite $l \in E$.
+
+\noindent Soit $\varepsilon > 0$. Il existe, puisque $(u_{\varphi(n)})_{n \in \mathbb{N}}$ est convergente, un entier $N_0 \in \mathbb{N}$ tel que pour tout $n \geqslant N_0$, $\|u_{\varphi(n)} - l\| \leqslant \varepsilon/2$.
+
+\noindent Puisque $(u_n)_{n \in \mathbb{N}}$ est de Cauchy, il existe $N_1 \in \mathbb{N}$ tel que pour tous $n,m \geqslant N_1$, $\|u_n - u_m\| \leqslant \varepsilon/2$. Il suffit de prendre $m = \max(N_1, \varphi(N_0))$. Comme on sait d'après le cours que $\varphi(N_0) \geqslant N_0$, on a donc $\|u_{\varphi(N_0)} - l\| \leqslant \varepsilon/2$. En appliquant l'inégalité triangulaire, on obtient pour tout $n \geqslant \max(N_0, N_1)$ :
+$$ \|u_n - l\| \leqslant \|u_n - u_m\| + \|u_m - l\| \leqslant \varepsilon/2 + \varepsilon/2 = \varepsilon $$
+\noindent d'où :
+\begin{center}
+    \fbox{$(u_n)_{n \in \mathbb{N}}$ est convergente.}
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent \textbf{e)} Rappelons le théorème de Bolzano-Weierstrass, hors-programme pour les élèves PCSI/PSI* :
+\begin{center}
+    \fbox{Toute suite de réels bornée admet une sous-suite convergente.}
+\end{center}
+
+\noindent $\bullet$ Le sens "$\Rightarrow$" a été déjà démontré en \textbf{a)}.
+
+\noindent $\bullet$ Montrons le sens "$\Leftarrow$" : Soit $(u_m)_{m \in \mathbb{N}} = \left( \sum_{k=1}^n u_m^{(k)} e_k \right)_{m \in \mathbb{N}}$ une suite dans $E$ (où $n = \dim(E)$ et $(e_1, \ldots, e_n)$ est une base de $E$).
+
+\noindent Supposons que $(u_n)_{n \in \mathbb{N}}$ est de Cauchy. Elle est donc bornée (d'après \textbf{c)}). Qu'importe la norme $\|\cdot\|$, l'équivalence des normes en dimension finie permet d'affirmer que les suites coordonnées $(u_m^{(k)})_{m \in \mathbb{N}}$ pour $k \in \llbracket 1, n \rrbracket$ sont bornées. (Il suffit de poser la norme $\|u\|_\infty = \max_{1 \leqslant k \leqslant n} (\|u^{(k)}\|_\infty)$, où $\|u\|_\infty = \sup_{n \in \mathbb{N}} |u_n|$ est une norme sur l'espace des suites bornées).
+
+\noindent D'après le théorème admis, les suites $(u_m^{(k)})_{m \in \mathbb{N}}$ admettent des sous-suites convergentes. En imbriquant les extractrices de chaque sous-suite, on peut ainsi vérifier que $(u_n)_{n \in \mathbb{N}}$ possède une sous-suite convergente. D'où, par \textbf{d)} :
+\begin{center}
+    \fbox{$(u_n)_{n \in \mathbb{N}}$ est convergente.}
+\end{center}
 
 \end{document}

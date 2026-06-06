@@ -5,7 +5,7 @@
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{stmaryrd}
-\usepackage[margin=1cm]{geometry}
+\usepackage[margin=1cm, includeheadfoot]{geometry}
 \usepackage{frenchmath}
 
 \begin{document}
@@ -28,10 +28,40 @@
         \noindent $2.$ Déterminer les valeurs propres de $A$ et les espaces propres correspondants.
         \vspace{0.1cm}
         \begin{flushright}
-            (\textbf{Mines-Ponts, PC})
+            (\textbf{Mines-Ponts, PC (2025)})
         \end{flushright}
     \end{minipage}%
 }
 \vspace{0.4cm}
 
+
+% --- TITRE DE L'EXERCICE ---
+\begin{center}
+    \large \textbf{2. Suites de Cauchy et complétude}
+\end{center}
+\vspace{0.2cm}
+
+% --- ENCADRÉ DE L'ÉNONCÉ ---
+\noindent\framebox[\textwidth]{%
+    \begin{minipage}{0.94\textwidth}
+        \vspace{0.2cm}
+        Soit $(E, \| \cdot \|)$ un espace vectoriel normé. Une suite $(u_n) \in E^{\mathbb{N}}$ est de Cauchy si $\forall \varepsilon > 0, \exists N \in \mathbb{N}, \forall n, m \geqslant N, \|u_n - u_m\| \leqslant \varepsilon$.
+        \vspace{0.2cm}
+        
+        \noindent \textbf{a)} Montrer que toute suite convergente est de Cauchy.
+        
+        \noindent \textbf{b)} Dans $E = \mathbb{R}[X]$ muni de la norme $\left\| \sum a_k X^k \right\| = \max |a_k|$, montrer que la suite $(P_n)$ de terme général $P_n = 1 + \sum_{k=1}^n \frac{X^k}{k}$ est de Cauchy sans être convergente ;
+        
+        \noindent \textbf{c)} Montrer que toute suite de Cauchy est bornée.
+        
+        \noindent \textbf{d)} Montrer que, si $(u_n)$ est de Cauchy et possède une suite extraite convergente, alors $(u_n)$ est convergente.
+        
+        \noindent \textbf{e)} On admet le théorème de Bolzano-Weierstrass dans $\mathbb{R}$. Montrer que si $E$ est de dimension finie, alors la suite $(u_n)$ est convergente si et seulement si elle est de Cauchy.
+        \vspace{0.1cm}
+        \begin{flushright}
+            (\textbf{Mines-Ponts, PSI (2025)})
+        \end{flushright}
+    \end{minipage}%
+}
+\vspace{0.4cm}
 \end{document}
