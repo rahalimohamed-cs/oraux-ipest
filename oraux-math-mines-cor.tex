@@ -1,0 +1,87 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}    % Indispensable pour la coupure des mots en français
+\usepackage[utf8]{inputenc} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage[margin=1cm]{geometry}
+\usepackage{frenchmath}
+
+\begin{document}
+
+% --- TITRE DE L'EXERCICE (Style identique au titre 1.7 de l'image) ---
+\begin{center}
+    \large \textbf{1. Etude d'une matrice à diagonale nulle}
+\end{center}
+\vspace{0.2cm}
+
+% --- ENCADRÉ DE L'ÉNONCÉ (Même style visuel avec source en bas à droite) ---
+\noindent\framebox[\textwidth]{%
+    \begin{minipage}{0.94\textwidth}
+        \vspace{0.2cm}
+        Soit un entier $n \geqslant 2$. On note $A$ la matrice de $\mathcal{M}_n(\mathbb{R})$ dont les coefficients diagonaux valent 0 et les autres coefficients valent 1.
+        \vspace{0.2cm}
+        
+        \noindent $1.$ Calculer $A^2$. En déduire que $A$ est inversible et exprimer $A^{-1}$ ;
+        
+        \noindent $2.$ Déterminer les valeurs propres de $A$ et les espaces propres correspondants.
+        \vspace{0.1cm}
+        \begin{flushright}
+            (\textbf{Mines-Ponts, PC})
+        \end{flushright}
+    \end{minipage}%
+}
+\vspace{0.4cm}
+
+% --- DÉBUT DE LA SOLUTION (Introduction avec triangle \triangleright) ---
+\noindent $\triangleright$ \textbf{Solution.} \\
+
+% --- PREMIÈRE QUESTION (Introduite par une puce \bullet comme dans l'image) ---
+\textbf{1.} Commençons par calculer $A^2$. Soit $(i,j) \in \llbracket 1,n \rrbracket^2$. On a :
+\[
+[A^2]_{i,j} = \sum_{k=1}^n A_{i,k} A_{k,j} = \sum_{\substack{k=1 \\ k \notin \{i,j\}}}^n A_{i,k} A_{k,j} = \sum_{\substack{k=1 \\ k \notin \{i,j\}}}^n 1 = \left| \llbracket 1,n \rrbracket \setminus \{i,j\} \right|,
+\]
+ce qui donne:
+\[
+[A^2]_{i,j} = \begin{cases} n-2 & \text{si } i \neq j \\ n-1 & \text{si } i = j \end{cases}
+\]
+On en déduit que 
+\[
+A^2 = (n-2)A + (n-1)I_n.
+\]
+On peut réécrire cette relation sous la forme $A \cdot \left( \frac{1}{n-1}(A - (n-2)I_n) \right) = I_n$. Ainsi, \fbox{la matrice $A$ est inversible} et, par unicité de l'inverse, on obtient :
+\[
+\boxed{A^{-1} = \frac{1}{n-1}(A - (n-2)I_n).}
+\]
+
+\vspace{0.4cm}
+
+% --- DEUXIÈME QUESTION (Deuxième puce \bullet) ---
+\textbf{2.} Déterminons les valeurs propres de $A$. L'équation aux valeurs propres $AX = \lambda X$, avec $\lambda \in \mathbb{C}$ et $X = (x_1, \dots, x_n)^T \in \mathbb{R}^n \setminus \{0\}$, équivaut au système suivant :
+\[
+\forall i \in \llbracket 1,n \rrbracket, \quad \sum_{\substack{j=1 \\ j \neq i}}^n x_j = \lambda x_i \quad (1)
+\]
+En sommant ces $n$ identités, il vient :
+\[
+(n-1) \left( \sum_{j=1}^n x_j \right) = \lambda \left( \sum_{i=1}^n x_i \right).
+\]
+Deux cas se présentent alors:
+\begin{itemize}
+    \item[\textbf{--}] Si $\sum_{i=1}^n x_i = 0$ : le vecteur $X$ appartient à l'hyperplan $H = \left\{ X = (x_1, \dots, x_n)^T \in \mathbb{R}^n \;\left|\; \sum_{i=1}^n x_i = 0 \right.\right\}$. On déduit alors de la relation (1) que :
+    \[
+    \sum_{j=1}^n x_j - x_i = \lambda x_i \quad \forall i \in \llbracket 1,n \rrbracket,
+    \]
+    soit $-x_i = \lambda x_i$, d'où $\lambda = -1$.
+    \item[\textbf{--}] Si $\sum_{i=1}^n x_i \neq 0$ : on obtient directement $\lambda = n-1$.
+\end{itemize}
+On peut donc déduire que le spectre de $A$ est :
+\[
+\boxed{\mathrm{Sp}(A) = \{n-1, -1\},}
+\]
+et les espaces propres associés sont donnés par :
+\[
+\boxed{E_{n-1}(A) = \mathrm{Vect}\left((1, \dots, 1)^T\right) \quad \text{et} \quad E_{-1}(A) = H.}
+\]
+
+\end{document}
