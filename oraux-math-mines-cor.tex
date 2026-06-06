@@ -164,7 +164,7 @@ $$ \boxed{ \|u_n\| \leqslant \|u_N\| + 1 } $$
 
 \noindent Soit $\varepsilon > 0$. Il existe, puisque $(u_{\varphi(n)})_{n \in \mathbb{N}}$ est convergente, un entier $N_0 \in \mathbb{N}$ tel que pour tout $n \geqslant N_0$, $\|u_{\varphi(n)} - l\| \leqslant \varepsilon/2$.
 
-\noindent Puisque $(u_n)_{n \in \mathbb{N}}$ est de Cauchy, il existe $N_1 \in \mathbb{N}$ tel que pour tous $n,m \geqslant N_1$, $\|u_n - u_m\| \leqslant \varepsilon/2$. Il suffit de prendre $m = \max(N_1, \varphi(N_0))$. Comme on sait d'après le cours que $\varphi(N_0) \geqslant N_0$, on a donc $\|u_{\varphi(N_0)} - l\| \leqslant \varepsilon/2$. En appliquant l'inégalité triangulaire, on obtient pour tout $n \geqslant \max(N_0, N_1)$ :
+\noindent Puisque $(u_n)_{n \in \mathbb{N}}$ est de Cauchy, il existe $N_1 \in \mathbb{N}$ tel que pour tous $n,m \geqslant N_1$, $\|u_n - u_m\| \leqslant \varepsilon/2$. On choisit $m = \varphi(K)$ avec $K = \max(N_0,N_1)$. On a donc pour tout $n \geqslant K$ :
 $$ \|u_n - l\| \leqslant \|u_n - u_m\| + \|u_m - l\| \leqslant \varepsilon/2 + \varepsilon/2 = \varepsilon $$
 \noindent d'où :
 \begin{center}
@@ -182,11 +182,11 @@ $$ \|u_n - l\| \leqslant \|u_n - u_m\| + \|u_m - l\| \leqslant \varepsilon/2 + \
 
 \noindent $\bullet$ Montrons le sens "$\Leftarrow$" : Soit $(u_m)_{m \in \mathbb{N}} = \left( \sum_{k=1}^n u_m^{(k)} e_k \right)_{m \in \mathbb{N}}$ une suite dans $E$ (où $n = \dim(E)$ et $(e_1, \ldots, e_n)$ est une base de $E$).
 
-\noindent Supposons que $(u_n)_{n \in \mathbb{N}}$ est de Cauchy. Elle est donc bornée (d'après \textbf{c)}). Qu'importe la norme $\|\cdot\|$, l'équivalence des normes en dimension finie permet d'affirmer que les suites coordonnées $(u_m^{(k)})_{m \in \mathbb{N}}$ pour $k \in \llbracket 1, n \rrbracket$ sont bornées. (Il suffit de poser la norme $\|u\|_\infty = \max_{1 \leqslant k \leqslant n} (\|u^{(k)}\|_\infty)$, où $\|u\|_\infty = \sup_{n \in \mathbb{N}} |u_n|$ est une norme sur l'espace des suites bornées).
+\noindent Supposons que $(u_m)_{m \in \mathbb{N}}$ est de Cauchy. Elle est donc bornée (d'après \textbf{c)}). Qu'importe la norme $\|\cdot\|$, l'équivalence des normes en dimension finie permet d'affirmer que les suites coordonnées $(u_m^{(k)})_{m \in \mathbb{N}}$ pour $k \in \llbracket 1, n \rrbracket$ sont bornées. (On compare avec la norme $\|u\|_\infty = \max_{1 \leqslant k \leqslant n} (\|u^{(k)}\|_\infty)$, où $\|u^{(k)}\|_\infty = \sup_{m \in \mathbb{N}} |u_m^{(k)}|$ est une norme sur l'espace des suites bornées).
 
-\noindent D'après le théorème admis, les suites $(u_m^{(k)})_{m \in \mathbb{N}}$ admettent des sous-suites convergentes. En imbriquant les extractrices de chaque sous-suite, on peut ainsi vérifier que $(u_n)_{n \in \mathbb{N}}$ possède une sous-suite convergente. D'où, par \textbf{d)} :
+\noindent D'après le théorème admis, les suites $(u_m^{(k)})_{m \in \mathbb{N}}$ admettent des sous-suites convergentes. En imbriquant les extractrices de chaque sous-suite, on peut ainsi vérifier que $(u_m)_{m \in \mathbb{N}}$ possède une sous-suite convergente. D'où, par \textbf{d)} :
 \begin{center}
-    \fbox{$(u_n)_{n \in \mathbb{N}}$ est convergente.}
+    \fbox{$(u_m)_{m \in \mathbb{N}}$ est convergente.}
 \end{center}
 
 \end{document}
