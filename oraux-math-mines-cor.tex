@@ -187,6 +187,74 @@ $$ \|u_n - l\| \leqslant \|u_n - u_m\| + \|u_m - l\| \leqslant \varepsilon/2 + \
 \noindent D'après le théorème admis, les suites $(u_m^{(k)})_{m \in \mathbb{N}}$ admettent des sous-suites convergentes. En imbriquant les extractrices de chaque sous-suite, on peut ainsi vérifier que $(u_m)_{m \in \mathbb{N}}$ possède une sous-suite convergente. D'où, par \textbf{d)} :
 \begin{center}
     \fbox{$(u_m)_{m \in \mathbb{N}}$ est convergente.}
+\end{center} 
+
+\pagebreak
+
+% --- TITRE DE L'EXERCICE ---
+\begin{center}
+    \large \textbf{3. Etude d'une relation d'anticommutation}
+\end{center}
+
+\vspace{0.2cm}
+% --- ENCADRÉ DE L'ÉNONCÉ ---
+\noindent\framebox[\textwidth]{%
+\begin{minipage}{0.94\textwidth}
+    \vspace{0.2cm}
+    Soit $E$ un $\mathbb{K}$-espace vectoriel de dimension $n$. Soient $U$ et $V$ deux sous-espaces vectoriels de $\mathcal{L}(E)$ tels que $U + V = \mathcal{L}(E)$ et tels que $\forall u \in U, \forall v \in V, u \circ v + v \circ u = 0$.
+    
+    \vspace{0.2cm}
+    \noindent \textbf{a)} Montrer qu'il existe $p \in U$ et $q \in V$ deux projecteurs tels que $p + q = \mathrm{id}$.
+    
+    \noindent \textbf{b)} Si $v \in V$, on pose $\varphi(v) = v_{|\operatorname{Ker}(p)} \in \mathcal{L}(\operatorname{Ker} p, E)$. Montrer que $\varphi$ est injective. En déduire que $\dim(V) \leqslant (n - r)^2$, avec $r = \operatorname{rg}(p)$.
+    
+    \noindent \textbf{c)} Montrer que $U$ ou $V$ est égal à $\{0\}$.
+    \vspace{0.1cm}
+    \begin{flushright}
+            (\textbf{Mines-Ponts, PSI (2026) - RMS 860})
+        \end{flushright}
+\end{minipage}%
+}
+\vspace{0.4cm}
+
+\noindent $\triangleright$ \textbf{Solution.} \\
+
+\noindent \textbf{a)} $\bullet$ Puisque $U+V = \mathcal{L}(E)$, il existe $(p,q) \in U \times V$ tel que $\mathrm{id} = p+q$. On sait aussi que $p \circ q + q \circ p = 0$. On a $p = p \circ \mathrm{id} = p \circ (p+q) = p^2 + p \circ q$ et $p \circ q + q \circ p = p \circ q + (\mathrm{id}-p) \circ p = p \circ q + p - p^2 = 0$, d'où :
+$$ \begin{cases} p = p^2 - p \circ q \\ p = p^2 + p \circ q \end{cases} $$
+\noindent soit donc (par symétrie des rôles de $p$ et $q$) $p \circ q = q \circ p = 0$, et d'où :
+$$ \boxed{p^2 = p \text{ et } q^2 = q} $$
+\noindent d'où :
+\begin{center}
+\fbox{$p$ et $q$ sont des projecteurs}
+\end{center}
+\vspace{0.5cm}
+
+\noindent \textbf{b)} $\bullet$ Il est clair que $\varphi$ définit une application linéaire de $V$ dans $\mathcal{L}(\ker p, E)$. Il suffit pour montrer l'injectivité de $\varphi$ de vérifier que $\ker(\varphi) = \{0\}$.
+
+\noindent $\bullet$ Soit $v \in \ker(\varphi)$. On a donc $v_{|\ker(p)} = 0$ soit $v(x) = 0 \quad \forall x \in \ker(p)$. Il suffit donc de montrer que $v(x) = 0 \quad \forall x \in \ker(p - \mathrm{id}_E)$, sachant que $p$ étant un projecteur, on a $E = \ker(p) \oplus \ker(p - \mathrm{id}_E)$.
+
+\noindent $\bullet$ On sait que $p \in U$ et $v \in V$ donc $p \circ v + v \circ p = 0$. Soit $x \in \ker(p - \mathrm{id}_E)$. Alors $v(x) = v(p(x)) = -p(v(x)) \Rightarrow p(v(x)) + v(x) = 0$. En appliquant $p$ à l'égalité on obtient $p^2(v(x)) + p(v(x)) = 2p(v(x)) = 0$ d'où $p(v(x)) = 0$ et par conséquent $v(x) = 0$. On déduit que $\ker(\varphi) = \{0\}$ d'où :
+\begin{center}
+\fbox{$\varphi$ est injective}
+\end{center}
+
+\noindent $\bullet$ On a donc par le théorème du rang : $\dim(V) = \dim(\operatorname{Im}(\varphi))$. On peut tenter donc l'inégalité qui en résulte : $\dim(V) \leqslant \dim(\mathcal{L}(\ker p, E))$, mais par le théorème du rang appliqué à $p$, on a $\mathcal{L}(\ker p, E)$ de dimension $\dim(E) \cdot \dim(\ker p) = n(n-r) \geqslant (n-r)^2$. La borne n'est pas suffisamment restreinte.
+
+\noindent $\bullet$ On remarque que $(n-r)^2 = \dim(\mathcal{L}(\ker p))$. Essayons de montrer que $\operatorname{Im}(\varphi) \subset \mathcal{L}(\ker p)$. Soit $v \in V$. On a donc $p \circ v + v \circ p = 0$ et donc $p \circ v_{|\ker p} + \underbrace{v \circ p_{|\ker p}}_{= 0} = 0$, d'où $\varphi(v)(x) = v_{|\ker p}(x) \in \ker(p) \quad \forall x \in \ker(p)$, et donc $\operatorname{Im}(\varphi) \subset \mathcal{L}(\ker p)$. On déduit donc que :
+\begin{center}
+\fbox{$\dim(V) \leqslant (n-r)^2$ avec $r = \operatorname{rg}(p)$}
+\end{center}
+\vspace{0.5cm}
+
+\noindent \textbf{c)} $\bullet$ Notons $s = \operatorname{rg}(q)$. Par symétrie des rôles de $p$ et $q$, on a par le raisonnement de a) et b) : $\dim(U) \leqslant (n-s)^2$. Or, la relation $p+q = \mathrm{id}$ implique (puisque $E = \ker(p) \oplus \ker(p-\mathrm{id}) = \ker(p) \oplus \ker(q)$) que $s+r = n$, d'où $\dim(U) \leqslant (n-(n-r))^2 = r^2$ donc :
+$$ \underline{\dim(U) \leqslant r^2} $$
+
+\noindent $\bullet$ On a $\dim(\mathcal{L}(E)) = \dim(U+V) \leqslant \dim(U) + \dim(V)$ donc :
+$$ \underline{n^2 \leqslant \dim(U) + \dim(V)} $$
+
+\noindent On est en même de montrer que $U$ ou $V$ est égal à $\{0\}$. On a $n^2 \leqslant \dim(U) + \dim(V) \leqslant r^2 + (n-r)^2$, or on a aussi donc $n^2 - r^2 \leqslant (n-r)^2 \Leftrightarrow (n-r)(2r) \leqslant 0$. On déduit de cette inégalité que soit $r=0$, soit $n-r=s=0$, donc :
+\begin{center}
+\fbox{$U$ ou $V$ est égal à $\{0\}$}
 \end{center}
 
 \end{document}
