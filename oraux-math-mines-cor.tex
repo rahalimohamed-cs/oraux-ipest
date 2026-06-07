@@ -231,14 +231,14 @@ $$ \boxed{p^2 = p \text{ et } q^2 = q} $$
 
 \noindent \textbf{b)} $\bullet$ Il est clair que $\varphi$ définit une application linéaire de $V$ dans $\mathcal{L}(\ker p, E)$. Il suffit pour montrer l'injectivité de $\varphi$ de vérifier que $\ker(\varphi) = \{0\}$.
 
-\noindent $\bullet$ Soit $v \in \ker(\varphi)$. On a donc $v_{|\ker(p)} = 0$ soit $v(x) = 0 \quad \forall x \in \ker(p)$. Il suffit donc de montrer que $v(x) = 0 \quad \forall x \in \ker(p - \mathrm{id}_E)$, sachant que $p$ étant un projecteur, on a $E = \ker(p) \oplus \ker(p - \mathrm{id}_E)$.
+\noindent $\bullet$ Soit $v \in \ker(\varphi)$. On a donc $v_{|\ker(p)} = 0$ soit $v(x) = 0 \quad \forall x \in \ker(p)$. Il suffit donc de montrer que $v(x) = 0 \quad \forall x \in \ker(p - \mathrm{id}_E)$, car $p$ étant un projecteur, on a $E = \ker(p) \oplus \ker(p - \mathrm{id}_E)$.
 
 \noindent $\bullet$ On sait que $p \in U$ et $v \in V$ donc $p \circ v + v \circ p = 0$. Soit $x \in \ker(p - \mathrm{id}_E)$. Alors $v(x) = v(p(x)) = -p(v(x)) \Rightarrow p(v(x)) + v(x) = 0$. En appliquant $p$ à l'égalité on obtient $p^2(v(x)) + p(v(x)) = 2p(v(x)) = 0$ d'où $p(v(x)) = 0$ et par conséquent $v(x) = 0$. On déduit que $\ker(\varphi) = \{0\}$ d'où :
 \begin{center}
 \fbox{$\varphi$ est injective}
 \end{center}
 
-\noindent $\bullet$ On a donc par le théorème du rang : $\dim(V) = \dim(\operatorname{Im}(\varphi))$. On peut tenter donc l'inégalité qui en résulte : $\dim(V) \leqslant \dim(\mathcal{L}(\ker p, E))$, mais par le théorème du rang appliqué à $p$, on a $\mathcal{L}(\ker p, E)$ de dimension $\dim(E) \cdot \dim(\ker p) = n(n-r) \geqslant (n-r)^2$. La borne n'est pas suffisamment restreinte.
+\noindent $\bullet$ On a donc par le théorème du rang : $\dim(V) = \dim(\operatorname{Im}(\varphi))$. On peut donc tenter l'inégalité qui en résulte : $\dim(V) \leqslant \dim(\mathcal{L}(\ker p, E))$, mais par le théorème du rang appliqué à $p$, on a $\mathcal{L}(\ker p, E)$ de dimension $\dim(E) \cdot \dim(\ker p) = n(n-r) \geqslant (n-r)^2$. La borne n'est pas suffisamment restreinte.
 
 \noindent $\bullet$ On remarque que $(n-r)^2 = \dim(\mathcal{L}(\ker p))$. Essayons de montrer que $\operatorname{Im}(\varphi) \subset \mathcal{L}(\ker p)$. Soit $v \in V$. On a donc $p \circ v + v \circ p = 0$ et donc $p \circ v_{|\ker p} + \underbrace{v \circ p_{|\ker p}}_{= 0} = 0$, d'où $\varphi(v)(x) = v_{|\ker p}(x) \in \ker(p) \quad \forall x \in \ker(p)$, et donc $\operatorname{Im}(\varphi) \subset \mathcal{L}(\ker p)$. On déduit donc que :
 \begin{center}
@@ -252,7 +252,7 @@ $$ \underline{\dim(U) \leqslant r^2} $$
 \noindent $\bullet$ On a $\dim(\mathcal{L}(E)) = \dim(U+V) \leqslant \dim(U) + \dim(V)$ donc :
 $$ \underline{n^2 \leqslant \dim(U) + \dim(V)} $$
 
-\noindent On est en même de montrer que $U$ ou $V$ est égal à $\{0\}$. On a $n^2 \leqslant \dim(U) + \dim(V) \leqslant r^2 + (n-r)^2$, or on a aussi donc $n^2 - r^2 \leqslant (n-r)^2 \Leftrightarrow (n-r)(2r) \leqslant 0$. On déduit de cette inégalité que soit $r=0$, soit $n-r=s=0$, donc :
+\noindent On est en mésure de montrer que $U$ ou $V$ est égal à $\{0\}$. On a $n^2 \leqslant \dim(U) + \dim(V) \leqslant r^2 + (n-r)^2$, or on a aussi donc $n^2 - r^2 \leqslant (n-r)^2 \Leftrightarrow (n-r)(2r) \leqslant 0$. On déduit de cette inégalité que soit $r=0$, soit $n-r=s=0$, donc :
 \begin{center}
 \fbox{$U$ ou $V$ est égal à $\{0\}$}
 \end{center}
