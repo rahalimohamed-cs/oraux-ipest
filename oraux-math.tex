@@ -1,14 +1,24 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,a4paper]{report}
 \usepackage[T1]{fontenc}    % Indispensable pour la coupure des mots en français
 \usepackage[utf8]{inputenc} 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{stmaryrd}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\titleformat{\chapter}[block]
+  {\normalfont\bfseries\filcenter}
+  {}
+  {0pt}
+  {\titlerule\vspace{1ex}\Huge}
 \usepackage[margin=1cm, includeheadfoot]{geometry}
 \usepackage{frenchmath}
 
 \begin{document}
+
+\chapter{Mines-Ponts}
+
 
 % --- TITRE DE L'EXERCICE (Style identique au titre 1.7 de l'image) ---
 \begin{center}
@@ -89,6 +99,7 @@
 \end{minipage}%
 }
 \vspace{0.4cm}
+\pagebreak
 
 % --- TITRE DE L'EXERCICE ---
 
@@ -121,7 +132,6 @@ Soient $E$ un espace euclidien et $(u_1, \dots, u_n)$ une famille de vecteurs un
 }
 
 \vspace{0.4cm}
-\pagebreak 
 % --- TITRE DE L'EXERCICE ---
 \begin{center}
     \large \textbf{5. Une équation fonctionnelle}
@@ -141,4 +151,37 @@ Soient $E$ un espace euclidien et $(u_1, \dots, u_n)$ une famille de vecteurs un
     \end{minipage}%
 }
 \vspace{0.4cm}
+\chapter{CentraleSupélec (Maths 1)}
+
+% --- TITRE DE L'EXERCICE ---
+
+\begin{center}
+
+\large \textbf{1. Trace d'un endomorphisme des matrices}
+
+\end{center}
+
+\vspace{0.2cm}
+% --- ENCADRÉ DE L'ÉNONCÉ ---
+
+\noindent\framebox[\textwidth]{%
+
+\begin{minipage}{0.94\textwidth}
+
+\vspace{0.2cm}
+
+    \noindent \textbf{a)} Montrer que : $\forall A, B \in \mathcal{M}_n(\mathbb{C}), \text{Tr}(AB) = \text{Tr}(BA)$.
+
+    \noindent \textbf{b)} Soit $f \in \mathcal{L}(\mathcal{M}_n(\mathbb{C}), \mathcal{M}_p(\mathbb{C}))$ telle que : $\forall A, B \in \mathcal{M}_n(\mathbb{C}), f(AB) = f(A) f(B)$. Soit $\phi : M \in \mathcal{M}_n(\mathbb{C}) \mapsto \text{Tr}(f(M))$. Montrer : $\forall A, B \in \mathcal{M}_n(\mathbb{C}), \phi(AB) = \phi(BA)$ ;
+    
+    \noindent \textbf{c)} En déduire qu'il existe $\alpha \in \mathbb{C}$ tel que : $\forall M \in \mathcal{M}_n(\mathbb{C}), \text{Tr}(f(M)) = \alpha \text{Tr}(M)$ .
+    \vspace{0.1cm}
+    \begin{flushright}
+        (\textbf{Centrale PSI (Maths 1) (2026) - RMS 1250})
+    \end{flushright}
+\end{minipage}%
+}
+
+\vspace{0.4cm}
+
 \end{document}

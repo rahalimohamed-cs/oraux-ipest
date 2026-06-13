@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,a4paper]{report}
 \usepackage[T1]{fontenc}    % Indispensable pour la coupure des mots en français
 \usepackage[utf8]{inputenc} 
 \usepackage{amsmath, amsthm}
@@ -6,6 +6,12 @@
 \usepackage{amsfonts}
 \usepackage{stmaryrd}
 \usepackage{xcolor}
+\usepackage{titlesec}
+\titleformat{\chapter}[block]
+  {\normalfont\bfseries\filcenter}
+  {}
+  {0pt}
+  {\titlerule\vspace{1ex}\Huge}
 \usepackage[margin=1cm, includeheadfoot]{geometry}
 \usepackage{frenchmath}
 % --- LE SECRET EST ICI : Le package tcolorbox ---
@@ -23,6 +29,8 @@
   fontupper=\itshape\color{black!70}   % Tout le texte à l'intérieur en italique et gris foncé
 }
 \begin{document}
+
+\chapter{Mines-Ponts}
 
 % --- TITRE DE L'EXERCICE (Style identique au titre 1.7 de l'image) ---
 \begin{center}
@@ -311,14 +319,18 @@ $$ |X(\omega)| = \|X_1(\omega)u_1 + \dots + X_n(\omega)u_n\|^2 \leqslant \left(|
 
 \vspace{0.3cm}
 \noindent $\bullet$ On a donc :
-$$ \mathbb{E}[X] = \mathbb{E}\left[ \left\| \sum_{i=1}^n X_i u_i \right\|^2 \right] = \mathbb{E}\left[ \sum_{i=1}^n \sum_{j=1}^n X_i X_j \langle u_i, u_j \rangle \right] $$
-$$ = \sum_{i \neq j} \langle u_i, u_j \rangle \underbrace{\mathbb{E}[X_i X_j]}_{\substack{= \mathbb{E}[X_i]\mathbb{E}[X_j] = 0 \\ \text{par indépendance}}} + \sum_{i=1}^n \|u_i\|^2 \mathbb{E}[X_i^2] $$
+\begin{align*}
+\mathbb{E}[X] &= \mathbb{E}\left[ \left\| \sum_{i=1}^n X_i u_i \right\|^2 \right] = \mathbb{E}\left[ \sum_{i=1}^n \sum_{j=1}^n X_i X_j \langle u_i, u_j \rangle \right] \\
+&= \sum_{i \neq j} \langle u_i, u_j \rangle \underbrace{\mathbb{E}[X_i X_j]}_{\substack{= \mathbb{E}[X_i]\mathbb{E}[X_j] = 0 \\ \text{par indépendance}}} + \sum_{i=1}^n \|u_i\|^2 \mathbb{E}[X_i^2]
+\end{align*}
 \noindent Or, puisque $X_i \sim \mathcal{U}(\{-1, 1\})$, on a $X_i^2 = 1$ $\mathbb{P}$-p.s., d'où $\mathbb{E}[X_i^2] = 1$ pour tout $i \in \llbracket 1, n \rrbracket$.
 
 \vspace{0.3cm}
 \noindent $\bullet$ On en déduit que :
-$$ \mathbb{E}[X] = \sum_{i=1}^n \|u_i\|^2 = n $$
-$$ \boxed{\mathbb{E}[X] = n} $$
+\begin{align*}
+\mathbb{E}[X] &= \sum_{i=1}^n \|u_i\|^2 = n \\
+&\implies \boxed{\mathbb{E}[X] = n}
+\end{align*}
 \vspace{0.5cm}
 
 \noindent \textbf{b)} On raisonne par l'absurde en supposant que pour tout $(\varepsilon_1, \dots, \varepsilon_n) \in \{-1, 1\}^n$, on a $\|\varepsilon_1 u_1 + \dots + \varepsilon_n u_n\| > \sqrt{n}$.
@@ -387,4 +399,87 @@ $$ 4f(x) + 3x + 1 = f(2x) \quad \forall x \in \mathbb{R} \iff 4ax^2 - 3x - \frac
 $$ \boxed{S = \left\{ f \in \mathcal{C}^2(\mathbb{R}, \mathbb{R}) \;\middle|\; f : x \mapsto ax^2 - \frac{3}{2}x - \frac{1}{3}, \; a \in \mathbb{R} \right\}} $$ 
 
 
+\chapter{CentraleSupélec (Maths 1)}
+
+\begin{center}
+
+\large \textbf{1. Trace d'un endomorphisme des matrices}
+
+\end{center}
+
+\vspace{0.2cm}
+% --- ENCADRÉ DE L'ÉNONCÉ ---
+
+\noindent\framebox[\textwidth]{%
+
+\begin{minipage}{0.94\textwidth}
+
+\vspace{0.2cm}
+
+    \noindent \textbf{a)} Montrer que : $\forall A, B \in \mathcal{M}_n(\mathbb{C}), \text{Tr}(AB) = \text{Tr}(BA)$.
+
+    \noindent \textbf{b)} Soit $f \in \mathcal{L}(\mathcal{M}_n(\mathbb{C}), \mathcal{M}_p(\mathbb{C}))$ telle que : $\forall A, B \in \mathcal{M}_n(\mathbb{C}), f(AB) = f(A) f(B)$. Soit $\phi : M \in \mathcal{M}_n(\mathbb{C}) \mapsto \text{Tr}(f(M))$. Montrer : $\forall A, B \in \mathcal{M}_n(\mathbb{C}), \phi(AB) = \phi(BA)$ ;
+    
+    \noindent \textbf{c)} En déduire qu'il existe $\alpha \in \mathbb{C}$ tel que : $\forall M \in \mathcal{M}_n(\mathbb{C}), \text{Tr}(f(M)) = \alpha \text{Tr}(M)$ .
+    \vspace{0.1cm}
+    \begin{flushright}
+        (\textbf{Centrale PSI (Maths 1) (2026) - RMS 1250})
+    \end{flushright}
+\end{minipage}%
+}
+
+\vspace{0.4cm}
+
+\noindent $\triangleright$ \textbf{Solution.} \\
+
+\noindent \textbf{a)} $\bullet$ On rappelle la définition de la trace. Soit $A \in \mathcal{M}_n(\mathbb{C})$. On définit la trace par :
+$$ \boxed{\mathrm{Tr}(A) = \sum_{i=1}^n [A]_{i,i}} $$
+
+\noindent $\bullet$ Soient $(A,B) \in \mathcal{M}_n(\mathbb{C})^2$. On a donc :
+\begin{align*}
+\mathrm{Tr}(AB) &= \sum_{i=1}^n [AB]_{i,i} = \sum_{i=1}^n \sum_{k=1}^n [A]_{i,k} [B]_{k,i} \\
+&= \sum_{k=1}^n \sum_{i=1}^n [A]_{i,k} [B]_{k,i} = \mathrm{Tr}(BA)
+\end{align*}
+\noindent d'où :
+$$ \boxed{\mathrm{Tr}(AB) = \mathrm{Tr}(BA)} $$
+\vspace{0.5cm}
+
+\noindent \textbf{b)} $\bullet$ On cherche à généraliser l'identité prouvée à la question a) pour $f = \mathrm{id}_{\mathcal{M}_n(\mathbb{C})}$. Soient $(A,B) \in \mathcal{M}_n(\mathbb{C})^2$. On a $\phi(AB) = \mathrm{Tr}(f(AB)) = \mathrm{Tr}(f(A)f(B))$.
+
+\noindent Or d'après la question a), $\mathrm{Tr}(f(A)f(B)) = \mathrm{Tr}(f(B)f(A))$ puisque $(f(A), f(B)) \in \mathcal{M}_p(\mathbb{C})^2$.
+
+\noindent On a donc $\mathrm{Tr}(f(AB)) = \mathrm{Tr}(f(B)f(A)) = \mathrm{Tr}(f(BA)) = \phi(BA)$, d'où :
+$$ \boxed{\phi(AB) = \phi(BA)} $$
+\vspace{0.5cm}
+
+\noindent \textbf{c)} $\bullet$ Soit $M \in \mathcal{M}_n(\mathbb{C})$. Pour pouvoir montrer l'existence d'un $\alpha \in \mathbb{C}$ tel que $\phi(M) = \alpha \mathrm{Tr}(M)$, on a deux informations à exploiter :
+
+\noindent $\bullet$ $\phi(AB) = \phi(BA)$ (résultat montré en b)).
+
+\noindent $\bullet$ $\phi$ est linéaire. Il faut remarquer cela, vu que la trace est une application linéaire et que $f$ est linéaire aussi, sans quoi l'hypothèse « $f \in \mathcal{L}(\mathcal{M}_n(\mathbb{C}), \mathcal{M}_p(\mathbb{C}))$ » serait anodine.
+
+\noindent $\bullet$ La linéarité de $\phi$ nous permet de réduire le problème sur les éléments de la base $(E_{i,j})_{1 \leqslant i,j \leqslant n}$ de $\mathcal{M}_n(\mathbb{C})$ : il suffit de vérifier que $\phi(M) = \alpha \mathrm{Tr}(M)$ pour $M = E_{i,j}$, $(i,j) \in \llbracket 1,n \rrbracket^2$.
+
+\noindent Soit donc $(i,j) \in \llbracket 1,n \rrbracket^2$. On sait que $\mathrm{Tr}(E_{i,j}) = \delta_{i,j} = \left\{\begin{array}{ll} 1 & \text{si } i=j \\ 0 & \text{sinon} \end{array}\right.$
+
+\noindent On a donc besoin de traiter deux cas :
+
+\noindent $\bullet$ Si $i \neq j$, alors on veut montrer que $\phi(E_{i,j}) = 0$. On exploite la propriété $\phi(AB) = \phi(BA)$ et on rappelle la règle de calcul des produits des $(E_{i,j})$ :
+$$ \boxed{E_{i,j} E_{k,l} = \delta_{j,k} E_{i,l} \quad \forall (i,j,k,l) \in \llbracket 1,n \rrbracket^4} $$
+
+\noindent On a donc pour $A = E_{i,i}$ et $B = E_{i,j}$ :
+$$ \phi(E_{i,i} E_{i,j}) = \phi(E_{i,j} E_{i,i}) $$
+\noindent d'où $\phi(E_{i,j}) = 0$ puisque $E_{i,i} E_{i,j} = E_{i,j}$ et $E_{i,j} E_{i,i} = 0$.
+
+\noindent $\bullet$ Si $i = j$, on veut montrer que $\phi(E_{i,i}) = \alpha$. Il suffit donc de montrer que $\phi(E_{i,i})$ est une constante par rapport à $i$. Soit $k \in \llbracket 1,n \rrbracket$ distinct de $i$.
+
+\noindent On a pour $A = E_{i,k}$ et $B = E_{k,i}$ : $\phi(E_{i,k} E_{k,i}) = \phi(E_{k,i} E_{i,k})$, d'où $\phi(E_{i,i}) = \phi(E_{k,k})$. Ainsi, en posant $\alpha = \phi(E_{1,1})$, on obtient $\phi(E_{i,i}) = \alpha$.
+
+\noindent $\bullet$ On peut conclure par linéarité de $\phi$. Pour que ce soit clair, soit $M \in \mathcal{M}_n(\mathbb{C})$. On décompose $M = \sum_{1 \leqslant i,j \leqslant n} M_{i,j} E_{i,j}$. On a donc :
+\begin{align*}
+\phi(M) &= \phi\left( \sum_{1 \leqslant i,j \leqslant n} M_{i,j} E_{i,j} \right) = \sum_{1 \leqslant i,j \leqslant n} M_{i,j} \phi(E_{i,j}) \\
+&= \sum_{1 \leqslant i \leqslant n} M_{i,i} \alpha = \alpha \mathrm{Tr}(M)
+\end{align*}
+\noindent d'où :
+$$ \boxed{\phi(M) = \alpha \mathrm{Tr}(M)} $$
 \end{document}
